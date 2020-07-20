@@ -1,0 +1,45 @@
+{% extends "./layouts/base.html" %} 
+{% block meta%}
+<title>Blogs - Home</title>
+{% endblock meta%}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <!-- Posts range here -->
+        <div class="col-12 mb-3 mt-4">
+            <div class="alert alert-info pt-3 pb-2 bg-light border" role="alert">
+                <h6 style="padding: 0;">
+                    {{ page_obj.start_index }} to {{ page_obj.end_index }} out of {{ page_obj.paginator.count  }} Posts
+                </h6>
+            </div>
+        </div>
+        
+        <!-- Blog Entries Column -->
+        {% for post in post_list %}
+        <div class="col-md-4 mb-5 left">
+            <div class="card h-100">
+                <div class="card-header bg-white pb-0">
+                    <h4 class="card-title">{{ post.title }}</h4>
+                </div>
+                <div class="card-body h-100">
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">
+                        {{post.content|slice:":200" }}...
+                        <a href="{% url 'blog' post.slug  %}">Read More &rarr;</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- Pagination here -->
+    {% if page_obj.paginator.num_pages > 1 %}
+        {% include './_partials/pagination.html' %}
+    {% endif %}
+</div>
+{%endblock%}

@@ -1,0 +1,73 @@
+{% extends './layouts/base.html' %}
+
+{% block meta%}
+<title>About - {{user.first_name}} {{ user.last_name }}</title>
+{% endblock meta%}
+
+{% block content %}
+
+  <!-- Page Content -->
+  <div class="container mt-5">
+
+    <div class="row">
+
+        <!-- Posts range here -->
+        <div class="col-lg-9 mx-auto">
+            <div class="alert alert-info pt-3 pb-2 bg-light border rounded-0" role="alert">
+                <h6 style="padding: 0;">About The Admin({{user.username}})</h6>
+            </div>
+        </div>
+        
+        <!-- Post Content Column -->
+        <div class="col-lg-8 m-auto">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{user.first_name}} {{ user.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td>{{ user.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Login</td>
+                            <td>{{ user.last_login }}</td>
+                        </tr>
+                        <tr>
+                            <td>joined On</td>
+                            <td>{{ user.date_joined}}</td>
+                        </tr>
+                        <tr>
+                            <td>is SuperUser</td>
+                            <td>{{ user.is_superuser }}</td>
+                        </tr>
+                        <tr>
+                            <td>is Active</td>
+                            <td>{{ user.is_active }}</td>
+                        </tr>
+                        <tr>
+                            <td>is Staff</td>
+                            <td>{{ user.is_staff }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+{% endblock %}

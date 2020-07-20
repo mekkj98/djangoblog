@@ -1,0 +1,39 @@
+{% extends './layouts/base.html' %}
+{% block meta%}
+<title>{{ post.title }} - Blog Post</title>
+{% endblock meta%}
+
+{% block content %}
+
+  <!-- Page Content -->
+  <div class="container mt-5">
+
+    <div class="row">
+     
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+            <!-- Meta -->
+            <h1 class="mt-4">{{ post.title}}</h1>
+            <p class="lead" style="font-size: 14px;">
+                <span>By <a href="{% url 'blog' post.slug %}">{{ post.author }}</a></span>
+                <span>on {{ post.created_on }}</span>    
+            </p>
+            <hr>
+            <div class="post-content content">{{ post.content|safe }}</div>
+      </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4 sidebar">
+            {% block sidebar %}
+                {% include './_partials/sidebar.html' %}
+            {% endblock %}
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+{% endblock %}
